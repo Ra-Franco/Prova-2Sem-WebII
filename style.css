@@ -1,0 +1,71 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A20A0A;
+}
+
+#app {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.personagem {
+    background-color: blue;
+    border: 2px solid azure;
+    border-radius: 5px;
+    margin: 64px;
+    padding: 32px;
+    width: 320px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.acoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+button {
+    padding: 12px;
+    gap: 32px;
+    border-radius: 8px;
+    border: none;
+    margin: 4px 8px;
+    background-color: red;
+    cursor: pointer;
+    transition: background-color 0.5, transform 0.2;
+}
+
+button:hover {
+    background-color: #A20A0A;
+    transform: translateY(-4px);
+}
+
+button:active {
+    transform: translateY(0px);
+}
+
+.barra-vida {
+    height: 32px;
+    background-color: green;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Barra de vida estilo pokemon Verde Amarela Vermelha */
+
+.sprite {
+    height: 80px;
+    background-color: white;
+    width: 100%;
+}
