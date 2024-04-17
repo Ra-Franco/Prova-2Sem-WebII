@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="app" v-model="acaoVilao(isHeroi)">
+    <div id="app" v-model="isHeroi">
         <div class="personagem">
             <div class="barra-vida" :style="{width: heroi.vida + '%', backgroundColor: corVida(heroi.vida)}">
                 {{heroi.vida}}</div>
@@ -23,7 +23,7 @@
                 <button @click="correr">Correr</button>
             </div>
         </div>
-        <div class="personagem" :style="[{morrer : vilao.morto}]">
+        <div class="personagem" :style="{backgroundColor: morrer()}">
             <div class="barra-vida" :style="{width: vilao.vida + '%', backgroundColor: corVida(vilao.vida)}">
                 {{vilao.vida}}</div>
             <div class="sprite">Placeholder IMG</div>
