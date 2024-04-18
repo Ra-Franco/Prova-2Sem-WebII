@@ -5,18 +5,62 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #A20A0A;
+    background-color: azure;
 }
 
 #app {
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
+    max-width: 100%;
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+
+.dashboard {
+    width: 360px;
+    margin: 64px;
+    height: 240px;
+    padding: 32px;
+    border: 2px solid rgb(134, 228, 207);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: rgb(231, 228, 228);
+    border-radius: 10px;
+    align-self: center;
+}
+
+.dashboard-column {
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: rgb(247, 246, 246);
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard-movement {
+    overflow: auto;
+    overflow-anchor: auto;
+    height: 120px;
+
+}
+
+.movements {
+    background-color: rgb(247, 246, 246);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border: 1px solid #000;
+    border-radius: px;
+}
+
+.layout-batalha {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
 .personagem {
-    background-color: blue;
-    border: 2px solid azure;
+    background-color: rgb(231, 228, 228);
+    border: 2px solid rgb(134, 228, 207);
     border-radius: 5px;
     margin: 64px;
     padding: 32px;
@@ -36,13 +80,13 @@ button {
     border-radius: 8px;
     border: none;
     margin: 4px 8px;
-    background-color: red;
+    background-color: rgb(97, 187, 97);
     cursor: pointer;
     transition: background-color 0.5, transform 0.2;
 }
 
 button:hover {
-    background-color: #A20A0A;
+    background-color: rgb(77, 151, 77);
     transform: translateY(-4px);
 }
 
@@ -68,36 +112,4 @@ button:active {
     height: 80px;
     background-color: white;
     width: 100%;
-}
-
-.dashboard {
-    width: 360px;
-    margin: 64px;
-    height: 240px;
-    padding: 32px;
-    border: 2px solid azure;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.dashboard-column {
-    display: flex;
-    justify-content: space-around;
-}
-
-.dashboard-movement {
-    overflow: auto;
-
-    overflow-anchor: auto;
-    height: 80px;
-}
-
-.movements {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    border: 1px solid black;
-
 }

@@ -30,23 +30,25 @@
                 </div>
             </div>
         </div>
-        <div class="personagem">
-            <div class="barra-vida" :style="{width: heroi.vida + '%', backgroundColor: corVida(heroi.vida)}">
-                {{heroi.vida}}</div>
-            <div class="sprite">Placeholder IMG</div>
-            <h1>Cleber</h1>
-            <div class="acoes">
-                <button @click="atacar(isHeroi)">Atacar</button>
-                <button @click="defender(isHeroi)">Defender</button>
-                <button @click="usarPocao(isHeroi)">Usar Poção</button>
-                <button @click="correr">Correr</button>
+        <div class="layout-batalha">
+            <div class="personagem">
+                <div class="barra-vida" :style="{width: heroi.vida + '%', backgroundColor: corVida(heroi.vida)}">
+                    {{heroi.vida}}</div>
+                <div class="sprite">Placeholder IMG</div>
+                <h1>Xerxes</h1>
+                <div class="acoes">
+                    <button @click="atacar(isHeroi)">Atacar</button>
+                    <button @click="defender(isHeroi)">Defender</button>
+                    <button @click="usarPocao(isHeroi)">Usar Poção</button>
+                    <button @click="correr">Correr</button>
+                </div>
             </div>
-        </div>
-        <div class="personagem" :style="{backgroundColor: morrer()}">
-            <div class="barra-vida" :style="{width: vilao.vida + '%', backgroundColor: corVida(vilao.vida)}">
-                {{vilao.vida}}</div>
-            <div class="sprite">Placeholder IMG</div>
-            <h1>Sansão</h1>
+            <div class="personagem" :style="{backgroundColor: morrer()}">
+                <div class="barra-vida" :style="{width: vilao.vida + '%', backgroundColor: corVida(vilao.vida)}">
+                    {{vilao.vida}}</div>
+                <div class="sprite">Placeholder IMG</div>
+                <h1>Diego</h1>
+            </div>
         </div>
 </body>
 
