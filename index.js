@@ -95,7 +95,7 @@ createApp({
             if (vida < 30) {
                 return 'red'
             } else if (vida < 60) {
-                return 'yellow'
+                return 'rgb(161, 175, 29)'
             } else {
                 return 'green'
             }
