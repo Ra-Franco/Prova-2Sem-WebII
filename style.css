@@ -71,7 +71,9 @@ button:active {
 }
 
 .dashboard {
+    width: 360px;
     margin: 64px;
+    height: 240px;
     padding: 32px;
     border: 2px solid azure;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -86,12 +88,16 @@ button:active {
 }
 
 .dashboard-movement {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    overflow: auto;
+
+    overflow-anchor: auto;
+    height: 80px;
 }
 
 .movements {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border: 1px solid black;
+
 }
