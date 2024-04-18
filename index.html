@@ -29,7 +29,21 @@
             <div class="sprite">Placeholder IMG</div>
             <h1>Sansão</h1>
         </div>
-    </div>
+        <div class="dashboard">
+            <h2>Dashboard</h2>
+            <div class="dashboard-column">
+                <p>Personagem</p>
+                <p>Ação</p>
+            </div>
+            <div class="dashboard-movement">
+                <div class="movements" v-for="(lista) in turnoLista">
+                    <div>
+                        {{lista.personagem}}
+                    </div>
+                    <div>{{lista.opcao}}</div>
+                </div>
+            </div>
+        </div>
 
 </body>
 

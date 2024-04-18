@@ -69,3 +69,29 @@ button:active {
     background-color: white;
     width: 100%;
 }
+
+.dashboard {
+    margin: 64px;
+    padding: 32px;
+    border: 2px solid azure;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.dashboard-column {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard-movement {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.movements {
+    display: flex;
+    justify-content: space-around;
+}
