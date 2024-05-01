@@ -95,6 +95,7 @@ button:active {
 }
 
 .barra-vida {
+    align-items: center;
     height: 32px;
     background-color: green;
     text-align: center;
@@ -117,4 +118,5 @@ button:active {
 
 .sprite img {
     height: 80px;
+    border-radius: 100px;
 }

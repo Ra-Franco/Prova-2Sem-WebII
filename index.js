@@ -1,5 +1,5 @@
 const { createApp } = Vue
-
+const URL = 'http://localhost:3000';
 
 createApp({
     data() {
@@ -7,10 +7,29 @@ createApp({
             heroi: { vida: 100, morto: false, isDefendendo: false },
             vilao: { vida: 100, morto: false, isDefendendo: false },
             isHeroi: true,
-            turnoLista: []
+            turnoLista: [],
+            turnoListaHeroi: [],
+            turnoListaVilao: [],
         }
     },
     methods: {
+        async atualizarVidaBanco(vidaHeroi, vidaVilao) {
+            try {
+                const response = await fetch(`${URL}/atualizarVida`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ vidaHeroi, vidaVilao })
+                })
+                if (!response.ok) {
+                    throw new Error('Erro ao atualizar a vida no banco')
+                }
+                console.log('Vida atualizada no banco')
+            } catch (e) {
+                console.error('Erro ao atualizar vida no banco: ', e)
+            }
+        },
         async atacar(isHeroi) {
             let dano = this.randomIntFromInterval(5, 25)
             if (isHeroi) {
@@ -26,6 +45,7 @@ createApp({
                 }
                 this.heroi.vida -= dano
             }
+            this.atualizarVidaBanco(this.heroi.vida, this.vilao.vida)
             this.logTurno("Ataque")
             await this.trocaTurno()
             await this.morrer()
@@ -56,15 +76,17 @@ createApp({
                 }
                 this.vilao.vida += cura
             }
+            this.atualizarVidaBanco(this.heroi.vida, this.vilao.vida)
             this.logTurno("Usou poção")
             await this.trocaTurno()
         },
-        correr() {
+        async correr() {
             const run = this.randomIntFromInterval(0, 1)
             if (run == 1) {
                 alert("Correu! Game Over")
             }
             this.logTurno("Usou correr")
+            await this.trocaTurno()
         },
         acaoVilao(isHeroi) {
             return new Promise((resolve) => {
@@ -74,7 +96,7 @@ createApp({
                             'atacar', 'defender', 'usarPocao'
                         ]
                         const acaoAleatorio = acoes[Math.floor(Math.random() * acoes.length)]
-                        resolve(this[acaoAleatorio](), 100)
+                        resolve(this[acaoAleatorio](), 0)
                     }
                 })
             })
@@ -85,9 +107,7 @@ createApp({
                     alert("Você perdeu!")
                 }
                 if (this.vilao.vida <= 0) {
-
                     alert("Você ganhou!")
-                    resolve('black')
                 }
             })
         },
@@ -117,6 +137,6 @@ createApp({
         logTurno(turno) {
             let pers = this.isHeroi ? "Herói" : "Vilão"
             this.turnoLista.push({ personagem: pers, opcao: turno })
-        }
+        },
     }
 }).mount("#app")
