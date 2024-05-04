@@ -7,7 +7,7 @@ const PORT = 3000;
 
 const config = {
     user: 'ramonfranco',
-    password: '!@Ra123!@',
+    password: '!@Ra321!@',
     server: 'brasil-fatec2.database.windows.net',
     database: 'fatec-web-jogo',
     options: {
@@ -21,7 +21,7 @@ server.use(express.static(path.join(__dirname)))
 
 server.post('/atualizarVida', async (req, res) => {
     const { vidaHeroi, vidaVilao } = req.body
-
+    console.log()
     try {
         await sql.connect(config)
         const request = new sql.Request();
