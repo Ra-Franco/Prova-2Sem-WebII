@@ -21,7 +21,7 @@ server.use(express.static(path.join(__dirname)))
 
 server.post('/atualizarVida', async (req, res) => {
     const { vidaHeroi, vidaVilao } = req.body
-    console.log()
+
     try {
         await sql.connect(config)
         const request = new sql.Request();
@@ -54,11 +54,34 @@ server.get('/characters', async (req, res) => {
     res.json({ heroi, vilao })
 })
 
+const logado = false;
 
-// Rota para servir o arquivo HTML principal
+server.post('/login', async (req, res) => {
+    const { login, senha } = req.body
+    console.log(login, senha)
+    try {
+        await sql.connect(config)
+        const request = new sql.Request();
+        const statusLogin = await request.query(
+            `SELECT 1 from usuarios WHERE user_email = '${login}' AND user_password = '${senha}'`
+        )
+        if (statusLogin == 1) {
+            logado = true;
+            res.sendFile(path.join(__dirname, 'jogo.html'));
+        }
+    } catch (e) {
+        res.status(500).send("Erro ao realizar o login")
+    }
+
+})
+
+
 server.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    if (logado == false) {
+        res.sendFile(path.join(__dirname, 'login.html'));
+    }
 });
+
 // Iniciar o servidor
 server.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
