@@ -4,28 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style-login.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
     <div id="app">
         <div class="login">
-            <div class="box">
-                <h2>Login</h2>
-                <div class="box-item">
-                    <div class="inputs">
-                        <input type="text" placeholder="Login">
-                        <input type="text" placeholder="Senha">
-                    </div>
-                    <div class="buttons">
-                        <button>Entrar</button>
-                        <button>Cadastrar</button>
-                    </div>
-                </div>
-            </div>
+            <component :is="estadoAtual"></component>
         </div>
     </div>
 </body>
 
 </html>
+<script src="login.js"></script>
