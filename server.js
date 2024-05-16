@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path')
 const sql = require("mssql")
+var cors = require("cors");
 
 const server = express();
 const PORT = 3000;
@@ -14,6 +15,21 @@ const config = {
         encrypt: true
     }
 }
+
+const corsOpts = {
+    origin: '*',
+
+    methods: [
+        'GET',
+        'POST',
+    ],
+
+    allowedHeaders: [
+        'Content-Type',
+    ],
+};
+
+server.use(cors(corsOpts));
 
 server.use(express.json())
 
@@ -54,35 +70,37 @@ server.get('/characters', async (req, res) => {
     res.json({ heroi, vilao })
 })
 
-const logado = false;
-
 server.post('/login', async (req, res) => {
-    const { login, senha } = req.body
-    console.log(login, senha)
+    const { userEmail, userPassword } = req.body
     try {
         await sql.connect(config)
         const request = new sql.Request();
-        const statusLogin = await request.query(
-            `SELECT 1 from usuarios WHERE user_email = '${login}' AND user_password = '${senha}'`
-        )
-        if (statusLogin == 1) {
-            logado = true;
-            res.sendFile(path.join(__dirname, 'jogo.html'));
+        request.input('userEmail', sql.VarChar, userEmail);
+        request.input('userPassword', sql.VarChar, userPassword);
+        const result = await request.query(
+            `SELECT 1 FROM usuarios WHERE user_email = @userEmail AND user_password = @userPassword`
+        );
+
+        if (result.recordset.length > 0) {
+            res.status(200).redirect('/jogo');
+        } else {
+            res.status(401).send("Credenciais inválidas");
         }
     } catch (e) {
         res.status(500).send("Erro ao realizar o login")
     }
 
 })
+server.get('/jogo', (req, res) => {
+    const filePath = path.join(__dirname, 'jogo.html');
+    res.sendFile(filePath);
+});
 
-
-server.get('/', (req, res) => {
-    if (logado == false) {
-        res.sendFile(path.join(__dirname, 'login.html'));
-    }
+server.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Iniciar o servidor
 server.listen(PORT, () => {
     console.log(`Servidor Express rodando na porta ${PORT}`);
-});
+}); 

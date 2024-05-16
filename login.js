@@ -11,7 +11,7 @@ const Login = {
         </div>
         <div class="buttons">
             <button>Entrar</button>
-            <button>Cadastrar</button>
+            <button>Sign Up</button>
         </div>
     </div>
 </div>
@@ -30,28 +30,25 @@ const SignUp = {
             <input type="password"> 
         </div>
         <div class="box-butons">
-        <button @click="alterarTemplate('Login')">Login</button>
-        <button @click="alterarTemplate('SignUp')">Sign Up</button>
+        <button @click="alterarTemplate">Login</button>
+        <button @click="alterarTemplate">Sign Up</button>
     </div>  
-
-    <script>
     `
 }
 
 createApp({
-    // data() {
-    //     return {
-    //         estadoAtual: "Login"
-    //     }
-    // },
-    setup() {
-        const estadoAtual = 'Login'
-        return { estadoAtual }
+    data() {
+        return {
+            estadoAtual: "Login"
+        }
     },
     methods: {
-        alterarTemplate(val) {
-            console.log(val)
-            this.estadoAtual = val;
+        alterarTemplate() {
+            if (this.estadoAtual == "Login") {
+                this.estadoAtual == "SignUp"
+            } else {
+                this.estadoAtual == "Login"
+            };
         }
     },
     components: {

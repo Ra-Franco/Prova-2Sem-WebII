@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style-login.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="login">
+            <div class="box">
+                <h2>Login</h2>
+                <div class="box-item">
+                    <div class="inputs">
+                        <input v-model="userEmail" type="text" placeholder="Login">
+                        <input v-model="userPassword" type="text" placeholder="Senha">
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" @click="consistirLogin(userEmail, userPassword)">Entrar</button>
+                        <button>Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            userEmail: '',
+            userPassword: ''
+        },
+        methods: {
+            async consistirLogin(userEmail, userPassword) {
+                console.log()
+                try {
+                    const response = await fetch(`http://localhost:3000/login`, {
+                        method: 'POST',
+                        origin: '*',
+                        mode: "cors",
+                        cache: "no-cache",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ userEmail, userPassword })
+                    })
+                    if (response.ok) {
+                        window.location.assign('/jogo')
+                    } else {
+                        alert('Login falho')
+                    }
+                } catch (e) {
+                    console.error('Erro ao realizar o login: ', e)
+                }
+            },
+        }
+    });
+</script>
