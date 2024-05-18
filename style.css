@@ -8,6 +8,11 @@ html {
     background-color: azure;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 #app {
     width: 100%;
     max-width: 100%;
@@ -27,6 +32,12 @@ html {
     background-color: rgb(231, 228, 228);
     border-radius: 10px;
     align-self: center;
+}
+
+.dashboard-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 16px;
 }
 
 .dashboard-column {
@@ -112,11 +123,11 @@ button:active {
 .sprite {
     align-self: center;
     height: 80px;
-
     width: 100%;
 }
 
 .sprite img {
     height: 80px;
-    border-radius: 100px;
+    width: 80px;
+    border-radius: 100%;
 }

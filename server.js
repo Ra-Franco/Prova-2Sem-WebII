@@ -70,6 +70,31 @@ server.get('/characters', async (req, res) => {
     res.json({ heroi, vilao })
 })
 
+server.post('/cadastrar', async (req, res) => {
+    const { userEmail, userPassword } = req.body
+    try {
+        await sql.connect(config);
+        const requestSQL = new sql.Request()
+        requestSQL.input('userEmail', sql.VarChar, userEmail);
+        requestSQL.input('userPassword', sql.VarChar, userPassword);
+        const resultSQL = await requestSQL.query(
+            `
+            insert into usuarios (user_email, user_password)
+            values (@userEmail, @userPassword)
+            `
+        )
+        console.log(resultSQL.rowsAffected[0])
+        if (resultSQL.rowsAffected[0] > 0) {
+            res.status(200).redirect('/login');
+        } else {
+            res.status(401).send("Informações inválidas");
+        }
+    } catch (e) {
+        console.error(e)
+        res.status(500).send("Erro ao realizar o cadastro")
+    }
+})
+
 server.post('/login', async (req, res) => {
     const { userEmail, userPassword } = req.body
     try {

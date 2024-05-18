@@ -12,7 +12,10 @@
 <body>
     <div id="app" v-model="isHeroi">
         <div class="dashboard">
-            <h2>Dashboard</h2>
+            <div class="dashboard-top">
+                <h2>Dashboard</h2>
+                <button><a href="dashboard.html">Visualizar</a></button>
+            </div>
             <div class="dashboard-column">
                 <p>Turno</p>
                 <p>Personagem</p>
@@ -35,7 +38,7 @@
                 <div class="barra-vida" :style="{width: heroi.vida + '%', backgroundColor: corVida(heroi.vida)}">
                     {{heroi.vida}}</div>
                 <div class="sprite">
-                    <img src="img/xerxes.png" alt="">
+                    <img src="img/xerxes.png" alt="Xerxes">
                 </div>
                 <h1>Xerxes</h1>
                 <div class="acoes">
@@ -48,8 +51,8 @@
             <div class="personagem" :style="{backgroundColor: morrer()}">
                 <div class="barra-vida" :style="{width: vilao.vida + '%', backgroundColor: corVida(vilao.vida)}">
                     {{vilao.vida}}</div>
-                <div class="sprite"><img src="img/diego.jpg" alt=""></div>
-                <h1>Diego</h1>
+                <div class="sprite"><img src="img/necromante.png" alt="Necromante"></div>
+                <h1>Necromante</h1>
             </div>
         </div>
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadstrar</title>
     <link rel="stylesheet" href="style-login.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
@@ -13,21 +13,22 @@
     <div id="app">
         <div class="login">
             <div class="box">
-                <h2>Login</h2>
+                <h2>Cadastrar</h2>
                 <div class="box-item">
                     <div class="inputs">
                         <input v-model="userEmail" type="text" placeholder="Login">
                         <input v-model="userPassword" type="text" placeholder="Senha">
                     </div>
                     <div class="buttons">
-                        <button type="submit" @click="consistirLogin(userEmail, userPassword)">Entrar</button>
-                        <button><a href="cadastro.html">Sign Up</a></button>
+                        <button type="submit" @click="cadastrar(userEmail, userPassword)">Cadastrar</button>
+                        <button><a href="index.html">Entrar</a></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 
 </html>
 <script>
@@ -38,10 +39,10 @@
             userPassword: ''
         },
         methods: {
-            async consistirLogin(userEmail, userPassword) {
+            async cadastrar(userEmail, userPassword) {
                 console.log()
                 try {
-                    const response = await fetch(`http://localhost:3000/login`, {
+                    const response = await fetch(`http://localhost:3000/cadastrar`, {
                         method: 'POST',
                         origin: '*',
                         mode: "cors",
@@ -52,9 +53,9 @@
                         body: JSON.stringify({ userEmail, userPassword })
                     })
                     if (response.ok) {
-                        window.location.assign('/jogo')
+                        window.location.assign('/login')
                     } else {
-                        alert('Login falho')
+                        alert('Erro ao cadastrar')
                     }
                 } catch (e) {
                     console.error('Erro ao realizar o login: ', e)
