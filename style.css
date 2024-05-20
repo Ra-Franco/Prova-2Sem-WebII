@@ -13,7 +13,7 @@ a {
     color: black;
 }
 
-#app {
+.container-jogo {
     width: 100%;
     max-width: 100%;
     text-align: center;

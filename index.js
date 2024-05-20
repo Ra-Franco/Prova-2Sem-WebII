@@ -8,8 +8,6 @@ createApp({
             vilao: { vida: 100, morto: false, isDefendendo: false },
             isHeroi: true,
             turnoLista: [],
-            turnoListaHeroi: [],
-            turnoListaVilao: [],
         }
     },
     methods: {
@@ -20,7 +18,11 @@ createApp({
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ vidaHeroi, vidaVilao })
+                    body: JSON.stringify({
+                        personagem: { vidaHeroi, vidaVilao },
+                        logHeroi: { pers, turno },
+                        logVilao: {}
+                    })
                 })
                 if (!response.ok) {
                     throw new Error('Erro ao atualizar a vida no banco')
@@ -137,6 +139,9 @@ createApp({
         logTurno(turno) {
             let pers = this.isHeroi ? "Herói" : "Vilão"
             this.turnoLista.push({ personagem: pers, opcao: turno })
+            console.log(this.turnoLista)
+            localStorage.setItem("TurnoLista", JSON.stringify(this.turnoLista))
         },
     }
+
 }).mount("#app")

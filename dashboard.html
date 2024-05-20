@@ -5,35 +5,65 @@
     <meta charset="UTF-8">
     <title>Dashboard - Jogo Herói e Vilão</title>
     <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="app" class="container">
+    <div id="app" class="container-dashboard">
         <h1>Dashboard</h1>
-        <div class="personagens">
-            <div class="personagem">
-                <h2>Herói</h2>
-                <div>Vida: {{ heroiVida }}%</div>
+        <div class="container-content">
+            <div class="dashboard">
+                <div class="dashboard-top">
+                    <h2>Turnos</h2>
+                    <button @click="fetchCharacterData">Atualizar</button>
+                </div>
+                <div class="dashboard-column">
+                    <p>Turno</p>
+                    <p>Personagem</p>
+                    <p>Ação</p>
+                </div>
+                <div class="dashboard-movement">
+                    <div class="movements" v-for="(lista, index) in turnoLista">
+                        <div>
+                            {{index}}
+                        </div>
+                        <div>
+                            {{lista.personagem}}
+                        </div>
+                        <div>{{lista.opcao}}</div>
+                    </div>
+                </div>
             </div>
-            <div class="personagem">
-                <h2>Vilão</h2>
-                <div>Vida: {{ vilaoVida }}%</div>
+
+            <div class="personagens">
+                <div class="personagem">
+                    <h2>Herói</h2>
+                    <div>Vida: {{ heroiVida }}%</div>
+                </div>
+                <div class="personagem">
+                    <h2>Vilão</h2>
+                    <div>Vida: {{ vilaoVida }}%</div>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
                 heroiVida: '',
-                vilaoVida: ''
+                vilaoVida: '',
+                turnoLista: []
             },
             mounted() {
                 this.fetchCharacterData();
             },
             methods: {
                 async fetchCharacterData() {
+                    this.turnoLista = localStorage.getItem('TurnoLista')
+                    this.turnoLista = JSON.parse(this.turnoLista)
                     try {
                         const response = await fetch('http://localhost:3000/characters');
                         const data = await response.json();
