@@ -20,8 +20,6 @@ createApp({
                     },
                     body: JSON.stringify({
                         personagem: { vidaHeroi, vidaVilao },
-                        logHeroi: { pers, turno },
-                        logVilao: {}
                     })
                 })
                 if (!response.ok) {
