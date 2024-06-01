@@ -22,6 +22,7 @@ createApp({
                         personagem: { vidaHeroi, vidaVilao },
                     })
                 })
+                console.log(response)
                 if (!response.ok) {
                     throw new Error('Erro ao atualizar a vida no banco')
                 }

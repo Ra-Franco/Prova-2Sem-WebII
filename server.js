@@ -36,6 +36,7 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname)))
 
 server.post('/atualizarVida', async (req, res) => {
+
     const { vidaHeroi, vidaVilao } = req.body
 
     try {

@@ -33,15 +33,21 @@ Este projeto consiste no desenvolvimento de uma aplicação web utilizando VueJS
 
 ## Uso
 
+##### Link do jogo https://prova-2sem-webii.onrender.com/
+
 1. **Cadastro e Login:**
    - Acesse a página de cadastro para criar uma nova conta.
+   - ![alt text](image-1.png)
    - Utilize as credenciais cadastradas para fazer login.
+   - ![alt text](image.png)
 
 2. **Jogar Avaliação Web (Herói e Vilão):**
    - Após o login, navegue até a página do jogo e inicie a avaliação.
+   - ![alt text](image-2.png)
 
 3. **Visualizar Dashboard:**
    - Após jogar a avaliação, acesse o dashboard para visualizar os dados gerados durante o jogo.
+   - ![alt text](image-3.png)
 
 ## Contribuição
 
