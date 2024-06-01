@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadstrar</title>
+    <title>Cadastrar</title>
     <link rel="stylesheet" href="style-login.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
@@ -17,7 +17,7 @@
                 <div class="box-item">
                     <div class="inputs">
                         <input v-model="userEmail" type="text" placeholder="Login">
-                        <input v-model="userPassword" type="text" placeholder="Senha">
+                        <input v-model="userPassword" type="password" placeholder="Senha">
                     </div>
                     <div class="buttons">
                         <button type="submit" @click="cadastrar(userEmail, userPassword)">Cadastrar</button>

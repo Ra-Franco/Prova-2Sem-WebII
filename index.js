@@ -1,5 +1,5 @@
 const { createApp } = Vue
-const URL = 'http://localhost:3000';
+const URL = 'https://prova-2sem-webii.onrender.com';
 
 createApp({
     data() {
