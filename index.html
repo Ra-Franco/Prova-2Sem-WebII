@@ -41,7 +41,7 @@
             async consistirLogin(userEmail, userPassword) {
                 console.log()
                 try {
-                    const response = await fetch(`https://prova-2sem-webii.onrender.com`, {
+                    const response = await fetch(`https://prova-2sem-webii.onrender.com/login`, {
                         method: 'POST',
                         origin: '*',
                         mode: "cors",
@@ -51,6 +51,7 @@
                         },
                         body: JSON.stringify({ userEmail, userPassword })
                     })
+                    console.log(response)
                     if (response.ok) {
                         window.location.assign('/jogo')
                     } else {
