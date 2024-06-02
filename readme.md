@@ -37,17 +37,17 @@ Este projeto consiste no desenvolvimento de uma aplicação web utilizando VueJS
 
 1. **Cadastro e Login:**
    - Acesse a página de cadastro para criar uma nova conta.
-   - ![alt text](image-1.png)
+   - ![alt text](img/img-readme/image-1.png)
    - Utilize as credenciais cadastradas para fazer login.
-   - ![alt text](image.png)
+   - ![alt text](img/img-readme/image.png)
 
 2. **Jogar Avaliação Web (Herói e Vilão):**
    - Após o login, navegue até a página do jogo e inicie a avaliação.
-   - ![alt text](image-2.png)
+   - ![alt text](img/img-readme/image-2.png)
 
 3. **Visualizar Dashboard:**
    - Após jogar a avaliação, acesse o dashboard para visualizar os dados gerados durante o jogo.
-   - ![alt text](image-3.png)
+   - ![alt text](img/img-readme/image-3.png)
 
 ## Contribuição
 
