@@ -13,13 +13,13 @@ createApp({
     methods: {
         async atualizarVidaBanco(vidaHeroi, vidaVilao) {
             try {
-                const response = await fetch(`${URL}/atualizarVida`, {
+                const response = await fetch(`https://prova-2sem-webii.onrender.com/atualizarVida`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        personagem: { vidaHeroi, vidaVilao },
+                        vidaHeroi, vidaVilao
                     })
                 })
                 console.log(response)
